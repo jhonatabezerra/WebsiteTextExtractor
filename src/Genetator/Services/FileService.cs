@@ -6,14 +6,18 @@ namespace Generator.Services
     /// <summary>Represents the FileService to Create/Read/Write files.</summary>
     public class FileService
     {
+        private const string FOLDER_BOOKS_GENERATED = "BooksGenerated";
+
         /// <summary>Execute the creation chapter files.</summary>
         /// <param name="fileConfig">The <see cref="FileConfiguration"/> instance.</param>
         /// <param name="inputText">The chapter text.</param>
-        public static void RunFileCreation(FileConfiguration fileConfig, string inputText)
+        public static void RunFileCreation(FileConfiguration fileConfig, string inputText, uint chapter)
         {
-            string filePath = $"{fileConfig.Path}{fileConfig.Language}/{fileConfig.FileName}_{fileConfig.Chapter}_{fileConfig.Language}.{fileConfig.Type}";
             try
             {
+                fileConfig.Path = CheckFolderExist(fileConfig.Path, FOLDER_BOOKS_GENERATED);
+                fileConfig.Path = CheckFolderExist(fileConfig.Path, fileConfig.Language);
+                string filePath = $"{fileConfig.Path}{fileConfig.FileName}_{chapter}.{fileConfig.Type}";
                 CheckFileExist(filePath);
                 CreateFile(filePath, inputText);
             }
@@ -30,6 +34,13 @@ namespace Generator.Services
         }
 
         #region Private Methods
+
+        private static string CheckFolderExist(string path, string folderName)
+        {
+            path = UpdateFolder(path, folderName);
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            return path;
+        }
 
         /// <summary>Check if file already exists. If yes, delete it.</summary>
         /// <param name="filePath">The file path.</param>
@@ -54,6 +65,13 @@ namespace Generator.Services
         {
             using StreamReader streamReader = File.OpenText(filePath);
             return streamReader.ReadToEnd();
+        }
+
+        private static string UpdateFolder(string path, string newFolder)
+        {
+            path += newFolder;
+            if (!path.EndsWith('\\')) return $"{path}\\";
+            return path;
         }
 
         #endregion Private Methods

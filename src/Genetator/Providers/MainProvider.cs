@@ -5,72 +5,47 @@ namespace Generator.Providers
 {
     public class MainProvider
     {
-        private const string PREFIX_TYPE = "txt";
         private readonly RequestService _service;
-        private readonly FileService _fileService;
         private readonly TranslatePageService _translateService;
 
         public MainProvider()
         {
             _service = new RequestService();
-            _fileService = new FileService();
             _translateService = new TranslatePageService();
         }
 
         /// <summary>Execute the process to export chapter.</summary>
         public void Execute()
         {
-            var chapter = 1498;
+            uint startChapter = 1;
+            uint endChapter = 10;
             var language = "EN";
             var fileName = "Release that Witch";
-            var path = @"C:\Users\Jhonata\Documents\BooksGenerated\";
-            var fileConfig = ConfigureFile(fileName, language, path, chapter);
-            var chapterText = GetChapterText(chapter);
-            FileService.RunFileCreation(fileConfig, chapterText);
-        }
+            var path = @"C:\Users\Jhonata\Documents\";
 
-        public void ExecuteAll(int startChapter, int chapterQuantity)
-        {
-            GenerateCollection(startChapter, chapterQuantity);
+            var initialUrl = $"https://boxnovel.com/novel/release-that-witch/chapter-";
+            var xPath = "//div[contains(@class, 'text-left')]";
+
+            WebConfiguration webConfig = new(initialUrl, xPath);
+            FileConfiguration fileConfig = new(fileName, language, path, startChapter, endChapter);
+
+            GenerateCollection(webConfig, fileConfig);
         }
 
         public async Task Translate(string text) => await _translateService.Translate(text);
 
         #region Private Methods
 
-        private void GenerateCollection(int startChapter, int chapterQuantity)
+        private void GenerateCollection(WebConfiguration web, FileConfiguration file)
         {
-            for (int chapter = startChapter; chapter <= chapterQuantity; chapter++)
+            for (uint chapter = file.StartChapter; chapter <= file.EndChapter; chapter++)
             {
-                var language = "EN";
-                var fileName = "Release that Witch";
-                var path = @"C:\Users\Jhonata\Documents\BooksGenerated\";
-                FileConfiguration fileConfigEN = ConfigureFile(fileName, language, path, chapter);
-                var chapterText = GetChapterText(chapter);
-                FileService.RunFileCreation(fileConfigEN, chapterText);
-                Console.WriteLine($"Gerado com sucesso! -> {fileConfigEN.FileName} - Chapter: {chapter}.");
-                //var translatedChapterText = await _translateService.Translate(chapterText);
-                //_fileService.RunFileCreation(fileConfigPT, translatedChapterText);
+                var url = $"{web.Url}{chapter}/";
+                var chapterText = _service.GetPageString(url, web.XPath);
+                FileService.RunFileCreation(file, chapterText, chapter);
+                Console.WriteLine($"Gerado com sucesso! -> {file.FileName} - Chapter: {chapter}.");
             }
         }
-
-        private string GetChapterText(int capter)
-        {
-            var url = $"https://boxnovel.com/novel/release-that-witch/chapter-{capter}/";
-            var xPath = "//div[contains(@class, 'text-left')]";
-            var text = _service.GetPageString(url, xPath);
-
-            return text;
-        }
-
-        private static FileConfiguration ConfigureFile(string fileName, string language, string path, int chapter) => new()
-        {
-            FileName = fileName,
-            Path = path,
-            Chapter = chapter.ToString(),
-            Language = language,
-            Type = PREFIX_TYPE
-        };
 
         #endregion Private Methods
     }
