@@ -9,7 +9,6 @@ internal class Program
         MainProvider mainProvider = new();
         //mainProvider.Execute();
         mainProvider.ExecuteAll(1, 10);
-        //mainProvider.Translate("Hello World!").GetAwaiter().GetResult();
         Console.WriteLine("Finalizando aplicação!");
     }
 }

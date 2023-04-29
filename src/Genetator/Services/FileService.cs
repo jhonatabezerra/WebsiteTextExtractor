@@ -17,9 +17,9 @@ namespace ConsoleApp1.Services
                 CheckFileExist(filePath);
                 CreateFile(filePath, inputText);
             }
-            catch (Exception Ex)
+            catch (Exception exception)
             {
-                Console.WriteLine(Ex.ToString());
+                Console.WriteLine(exception.Message);
             }
         }
 

@@ -18,10 +18,8 @@ namespace ConsoleApp1.Services
 
             var clientWithHeader = await url.AllowAnyHttpStatus().GetAsync();
             var content = await clientWithHeader.GetStringAsync();
-            //var result = content.Substring(4, content.IndexOf("\"", 4, StringComparison.Ordinal) - 4); // Get first line.
-            var result = content;
 
-            return result;
+            return content;
         }
     }
 }
