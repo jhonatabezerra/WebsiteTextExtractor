@@ -26,7 +26,7 @@ namespace Generator.Providers
             var path = @"C:\Users\Jhonata\Documents\BooksGenerated\";
             var fileConfig = ConfigureFile(fileName, language, path, chapter);
             var chapterText = GetChapterText(chapter);
-            _fileService.RunFileCreation(fileConfig, chapterText);
+            FileService.RunFileCreation(fileConfig, chapterText);
         }
 
         public void ExecuteAll(int startChapter, int chapterQuantity)
@@ -47,7 +47,7 @@ namespace Generator.Providers
                 var path = @"C:\Users\Jhonata\Documents\BooksGenerated\";
                 FileConfiguration fileConfigEN = ConfigureFile(fileName, language, path, chapter);
                 var chapterText = GetChapterText(chapter);
-                _fileService.RunFileCreation(fileConfigEN, chapterText);
+                FileService.RunFileCreation(fileConfigEN, chapterText);
                 Console.WriteLine($"Gerado com sucesso! -> {fileConfigEN.FileName} - Chapter: {chapter}.");
                 //var translatedChapterText = await _translateService.Translate(chapterText);
                 //_fileService.RunFileCreation(fileConfigPT, translatedChapterText);

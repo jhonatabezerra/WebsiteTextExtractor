@@ -20,7 +20,7 @@ namespace Genetator.Tests
             var txt = "Fui criado com sucesso";
 
             // Act
-            _fileService.RunFileCreation(new FileConfiguration(), txt);
+            FileService.RunFileCreation(new FileConfiguration(), txt);
         }
     }
 }
