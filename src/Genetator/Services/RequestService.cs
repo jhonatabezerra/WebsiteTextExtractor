@@ -9,7 +9,7 @@ namespace Generator.Services
         /// <summary>Request page.</summary>
         /// <param name="url">Used to get the HTML body.</param>
         /// <returns>String of page.</returns>
-        public string GetPageString(string url, string xPath)
+        public static string GetPageString(string url, string xPath)
         {
             try
             {
