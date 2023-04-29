@@ -1,7 +1,7 @@
-﻿using ConsoleApp1.Domain;
-using ConsoleApp1.Services;
+﻿using Generator.Domain;
+using Generator.Services;
 
-namespace ConsoleApp1.Providers
+namespace Generator.Providers
 {
     public class MainProvider
     {

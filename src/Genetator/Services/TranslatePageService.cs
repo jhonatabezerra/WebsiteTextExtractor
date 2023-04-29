@@ -1,7 +1,7 @@
 ﻿using Flurl.Http;
 using System.Web;
 
-namespace ConsoleApp1.Services
+namespace Generator.Services
 {
     /// <summary>Represents the Translate pages service.</summary>
     public class TranslatePageService

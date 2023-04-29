@@ -1,8 +1,9 @@
-﻿using ConsoleApp1.Services;
+﻿using Generator.Services;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using Xunit;
 
-namespace TestProject1
+namespace Genetator.Tests
 {
     public class TranslateServiceTests
     {

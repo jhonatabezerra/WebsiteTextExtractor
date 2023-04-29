@@ -1,7 +1,7 @@
-﻿using ConsoleApp1.Domain;
+﻿using Generator.Domain;
 using System.Text;
 
-namespace ConsoleApp1.Services
+namespace Generator.Services
 {
     /// <summary>Represents the FileService to Create/Read/Write files.</summary>
     public class FileService
@@ -44,7 +44,7 @@ namespace ConsoleApp1.Services
         private void CreateFile(string filePath, string inputText)
         {
             using FileStream fs = File.Create(filePath);
-            Byte[] title = new UTF8Encoding(true).GetBytes(inputText);
+            byte[] title = new UTF8Encoding(true).GetBytes(inputText);
             fs.Write(title, 0, title.Length);
         }
 

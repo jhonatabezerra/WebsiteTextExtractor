@@ -1,7 +1,8 @@
-﻿using ConsoleApp1.Domain;
-using ConsoleApp1.Services;
+﻿using Generator.Domain;
+using Generator.Services;
+using Xunit;
 
-namespace TestProject1
+namespace Genetator.Tests
 {
     public class FileServiceTests
     {

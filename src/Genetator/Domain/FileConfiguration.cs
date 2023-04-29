@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.Domain
+﻿namespace Generator.Domain
 {
     public class FileConfiguration
     {

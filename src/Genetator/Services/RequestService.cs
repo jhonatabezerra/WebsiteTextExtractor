@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System.Web;
 
-namespace ConsoleApp1.Services
+namespace Generator.Services
 {
     /// <summary>Represents the Request services (GET, POST...).</summary>
     public class RequestService

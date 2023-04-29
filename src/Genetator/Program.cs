@@ -1,4 +1,4 @@
-﻿using ConsoleApp1.Providers;
+﻿using Generator.Providers;
 
 internal class Program
 {
