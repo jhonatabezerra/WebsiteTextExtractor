@@ -9,19 +9,26 @@ internal class Program : ConsoleCommands
 
     private static void Main()
     {
-        Console.WriteLine("Iniciando aplicação!");
+        Console.WriteLine("Starting process!");
         MainProvider mainProvider = new();
         GetInformation();
         mainProvider.Execute(_web, _file);
-        Console.WriteLine("Finalizando aplicação!");
+        Console.WriteLine("Finished process!");
     }
 
     private static void GetInformation()
     {
-        var isDefaultValue = CommandInputBool("Would you like to use the default value (Y/N): ");
+        var isDefaultValue = CommandInputBool("Would you like to use an example with default chapter (Y/N): ");
         if (isDefaultValue)
         {
             DefaultInformation2();
+            return;
+        }
+
+        var isBigBook = CommandInputBool("Would you like to use an example with default books (Y/N): ");
+        if (isBigBook)
+        {
+            DefaultInformation3();
             return;
         }
 
@@ -69,5 +76,22 @@ internal class Program : ConsoleCommands
 
         _web = new(url, xPathText, xPathTitle, true);
         _file = new(bookName, language, path, startChapter, endChapter);
+    }
+
+    private static void DefaultInformation3()
+    {
+        uint startChapter = 139;
+        uint endChapter = 400;
+        var language = "EN";
+        var bookName = "The Cursed Prince";
+        var path = @"C:\Users\Jhonata\Documents";
+
+        var url = $"https://novelbin.net/n/the-cursed-prince/chapter-";
+        var xPathTitle = "//*[@id=\"chapter\"]/div/div/h2/a";
+        var xPathText = "//*[@id=\"chr-content\"]";
+        List<string> tagsToFix = new() { "62e886631a93af4356fc7a46", ">>>>>>\\s" };
+
+        _web = new(url, xPathText, xPathTitle, true, tagsToFix);
+        _file = new(bookName, language, path, startChapter, endChapter, null, null, true);
     }
 }
