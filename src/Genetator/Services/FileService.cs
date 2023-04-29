@@ -13,9 +13,15 @@ namespace Generator.Services
         {
             try
             {
-                string filePath = $"{fileConfig.Path}{fileConfig.FileName}_{chapter}.{fileConfig.Type}";
+                string filePath = string.Empty;
+
+                if (string.IsNullOrEmpty(fileConfig.Title))
+                    filePath = $"{fileConfig.Path}{fileConfig.FileName}_{chapter}.{fileConfig.Type}";
+                else
+                    filePath = $"{fileConfig.Path}{GetTitle(fileConfig.Title)}.{fileConfig.Type}";
+
                 CheckFileExist(filePath);
-                CreateFile(filePath, inputText);
+                CreateFile(filePath, fileConfig.Title, inputText);
             }
             catch (Exception exception)
             {
@@ -49,11 +55,14 @@ namespace Generator.Services
         /// <summary>Create a new file and Add some text to file.</summary>
         /// <param name="filePath">The file path.</param>
         /// <param name="inputText">The text that will be inserted into the file.</param>
-        private static void CreateFile(string filePath, string inputText)
+        private static void CreateFile(string filePath, string? inputTitle, string inputText)
         {
             using FileStream fs = File.Create(filePath);
-            byte[] title = new UTF8Encoding(true).GetBytes(inputText);
-            fs.Write(title, 0, title.Length);
+            byte[] title = new UTF8Encoding(true).GetBytes(inputTitle + "\n\n");
+            byte[] text = new UTF8Encoding(true).GetBytes(inputText + "\n\n");
+
+            if (!string.IsNullOrEmpty(inputTitle)) fs.Write(title, 0, title.Length);
+            if (!string.IsNullOrEmpty(inputText)) fs.Write(text, 0, text.Length);
         }
 
         /// <summary>Open the stream and read it back.</summary>
@@ -75,6 +84,24 @@ namespace Generator.Services
             path += newFolder;
             if (!path.EndsWith('\\')) return $"{path}\\";
             return path;
+        }
+
+        private static string GetTitle(string title)
+        {
+            var jogo = '#';
+            if (title.Contains('*')) title = title.Replace('*', jogo);
+            if (title.Contains('|')) title = title.Replace('|', jogo);
+            if (title.Contains('/')) title = title.Replace('/', jogo);
+            if (title.Contains('\\')) title = title.Replace('\\', jogo);
+            if (title.Contains('?')) title = title.Replace('?', jogo);
+            if (title.Contains(':')) title = title.Replace(':', jogo);
+            if (title.Contains(';')) title = title.Replace(';', jogo);
+            if (title.Contains('\"')) title = title.Replace('\"', jogo);
+            if (title.Contains('\\')) title = title.Replace('\\', jogo);
+            if (title.Contains('<')) title = title.Replace('<', jogo);
+            if (title.Contains('>')) title = title.Replace('>', jogo);
+
+            return title;
         }
 
         #endregion Private Methods

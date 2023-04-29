@@ -7,26 +7,25 @@ namespace Generator.Providers
     {
         private const string FOLDER_BOOKS_GENERATED = "BooksGenerated";
 
-        private readonly RequestService _service;
         private readonly TranslatePageService _translateService;
 
-        public MainProvider()
-        {
-            _service = new RequestService();
-            _translateService = new TranslatePageService();
-        }
+        public MainProvider() => _translateService = new TranslatePageService();
 
         /// <summary>Execute the process to export chapter.</summary>
         public void Execute(WebConfiguration web, FileConfiguration file)
         {
             file.Path = FileService.CheckFolderExist(file.Path, FOLDER_BOOKS_GENERATED);
+            file.Path = FileService.CheckFolderExist(file.Path, file.FileName);
             file.Path = FileService.CheckFolderExist(file.Path, file.Language);
             for (uint chapter = file.StartChapter; chapter <= file.EndChapter; chapter++)
             {
                 var url = $"{web.Url}{chapter}/";
-                var chapterText = RequestService.GetPageString(url, web.XPath);
+                var chapterText = RequestService.GetPageString(url, web.XPathText);
+                if (web.HasTitle)
+                    file.Title = RequestService.GetPageString(url, web.XPathTitle);
+
                 FileService.RunFileCreation(file, chapterText, chapter);
-                Console.WriteLine($"Gerado com sucesso! -> {file.FileName} - Chapter: {chapter.ToString()}.");
+                Console.WriteLine($"Gerado com sucesso! -> {file.FileName} - Chapter: {chapter}.");
             }
         }
 
