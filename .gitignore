@@ -1,5 +1,7 @@
-/src/Genetator/bin
-/src/Genetator/obj
-/tests/GenetatorTests/bin
-/tests/GenetatorTests/obj
+/src/WebsiteTextExtractor.Console/obj
+/src/WebsiteTextExtractor.Console/bin
+/tests/WebsiteTextExtractor.Console.Tests/obj
+/tests/WebsiteTextExtractor.Console.Tests/bin
 /.vs
+/tests/WebsiteTextExtractor.Core.Tests/bin
+/tests/WebsiteTextExtractor.Core.Tests/obj

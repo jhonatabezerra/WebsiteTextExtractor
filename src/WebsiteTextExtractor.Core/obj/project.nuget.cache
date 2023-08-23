@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "2GhH2wauCzeh0sQamXhfOSrQo8Mvxsod5D3Ge+SD7SOfx5E4tk3A/CCLGzz6dJe9t9/LWo25rFgaSoiju6RXrA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jhona\\source\\WebsiteTextExtractor\\src\\WebsiteTextExtractor.Core\\WebsiteTextExtractor.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jhona\\.nuget\\packages\\flurl\\3.0.6\\flurl.3.0.6.nupkg.sha512",
+    "C:\\Users\\jhona\\.nuget\\packages\\flurl.http\\3.2.4\\flurl.http.3.2.4.nupkg.sha512",
+    "C:\\Users\\jhona\\.nuget\\packages\\htmlagilitypack\\1.11.46\\htmlagilitypack.1.11.46.nupkg.sha512",
+    "C:\\Users\\jhona\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
+    "C:\\Users\\jhona\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\jhona\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\jhona\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}
