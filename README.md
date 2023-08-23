@@ -1,4 +1,4 @@
-# BookGenerator
+# WebsiteTextExtractor
 
 ## Insight💡
 
