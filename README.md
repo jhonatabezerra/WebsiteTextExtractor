@@ -34,7 +34,7 @@ var content = await clientWithHeader.GetStringAsync();
 
 ---
 ## Features✔️
-[x] Create the initial structure of how the software will behave to get data from the site;
-[x] Create the resource to download data in text format (.txt) passing the path to where the file will be saved;
-[x] Create a feature to translate the text after it is extracted from the page;
-[ ] Create an interface to facilitate data entry;
+- [x] Create the initial structure of how the software will behave to get data from the site;
+- [x] Create the resource to download data in text format (.txt) passing the path to where the file will be saved;
+- [x] Create a feature to translate the text after it is extracted from the page;
+- [ ] Create an interface to facilitate data entry;
