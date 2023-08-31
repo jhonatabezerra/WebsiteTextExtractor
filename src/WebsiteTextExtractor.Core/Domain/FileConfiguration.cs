@@ -4,10 +4,6 @@
     {
         private const string PREFIX_TYPE = "txt";
 
-        public FileConfiguration()
-        {
-        }
-
         public FileConfiguration(
             string fileName,
             string language,

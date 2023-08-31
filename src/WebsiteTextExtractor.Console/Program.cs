@@ -7,12 +7,12 @@ internal class Program : ConsoleCommands
     private static WebConfiguration _web;
     private static FileConfiguration _file;
 
-    private static void Main()
+    private static async void Main()
     {
         Console.WriteLine("Starting process!");
         MainProvider mainProvider = new();
         GetInformation();
-        mainProvider.Execute(_web, _file);
+        await mainProvider.Execute(_web, _file);
         Console.WriteLine("Finished process!");
     }
 
