@@ -1,8 +1,8 @@
-﻿using WebsiteTextExtractor.Core.Services;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
+using WebsiteTextExtractor.Core.Services;
 using Xunit;
 
-namespace WebsiteTextExtractor.Core.Tests
+namespace WebsiteTextExtractor.Core.Tests.Services
 {
     public class TranslateServiceTests
     {

@@ -5,3 +5,5 @@
 /.vs
 /tests/WebsiteTextExtractor.Core.Tests/bin
 /tests/WebsiteTextExtractor.Core.Tests/obj
+/src/WebsiteTextExtractor.Core/bin
+/src/WebsiteTextExtractor.Core/obj

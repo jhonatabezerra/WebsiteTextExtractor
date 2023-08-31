@@ -60,10 +60,17 @@ namespace WebsiteTextExtractor.Core.Services
             HasFile(path);
         }
 
+        public static void CreateDirectory(string path, string folderName)
+        {
+            path = CheckSlashPath(path);
+            path = UpdateFolderName(path, folderName);
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+        }
+
         public static string CheckFolderExist(string path, string folderName)
         {
-            path = CheckPath(path);
-            path = UpdateFolder(path, folderName);
+            path = CheckSlashPath(path);
+            path = UpdateFolderName(path, folderName);
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
             return path;
         }
@@ -117,17 +124,13 @@ namespace WebsiteTextExtractor.Core.Services
             return streamReader.ReadToEnd();
         }
 
-        private static string CheckPath(string path)
-        {
-            if (!path.EndsWith('\\')) return $"{path}\\";
-            return path;
-        }
+        private static string CheckSlashPath(string path) =>
+            !path.EndsWith('\\') ? $"{path}\\" : path;
 
-        private static string UpdateFolder(string path, string newFolder)
+        private static string UpdateFolderName(string path, string folderName)
         {
-            path += newFolder;
-            if (!path.EndsWith('\\')) return $"{path}\\";
-            return path;
+            path += folderName;
+            return !path.EndsWith('\\') ? $"{path}\\" : path;
         }
 
         private static string GetTitle(string title)

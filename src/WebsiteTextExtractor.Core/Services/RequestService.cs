@@ -10,7 +10,7 @@ namespace WebsiteTextExtractor.Core.Services
         /// <summary>Request page.</summary>
         /// <param name="url">Used to get the HTML body.</param>
         /// <returns>String of page.</returns>
-        public static string GetPageString(string url, string xPath, List<string>? tags = null)
+        public string GetPageString(string url, string xPath, List<string>? tags = null)
         {
             string decodedText = string.Empty;
 

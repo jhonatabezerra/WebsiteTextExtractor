@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Genetator\WebsiteTextExtractor.Console.csproj" />
     <ProjectReference Include="..\..\src\WebsiteTextExtractor.Core\WebsiteTextExtractor.Core.csproj" />
   </ItemGroup>
 
