@@ -1,4 +1,6 @@
-﻿using WebsiteTextExtractor.Core.Domain;
+﻿using Moq;
+using WebsiteTextExtractor.Core.Domain.Interfaces;
+using WebsiteTextExtractor.Core.Domain.Models;
 using WebsiteTextExtractor.Core.Providers;
 using Xunit;
 
@@ -8,10 +10,26 @@ namespace WebsiteTextExtractor.Core.Tests.Providers
     {
         private readonly MainProvider _mainProvider;
 
-        public MainProviderTests() => _mainProvider = new MainProvider();
+        private readonly Mock<ITranslatePageService> _translatePageServiceMock;
+        private readonly Mock<IPageExtractorService> _pageExtractorServiceMock;
+        private readonly Mock<IFileService> _fileServiceMock;
+
+        public MainProviderTests()
+        {
+            _translatePageServiceMock = new Mock<ITranslatePageService>(MockBehavior.Strict);
+            _pageExtractorServiceMock = new Mock<IPageExtractorService>(MockBehavior.Strict);
+            _fileServiceMock = new Mock<IFileService>(MockBehavior.Strict);
+
+            _mainProvider = new MainProvider(
+                _translatePageServiceMock.Object,
+                _pageExtractorServiceMock.Object,
+                _fileServiceMock.Object);
+
+            SetUp();
+        }
 
         [Fact]
-        public async Task Ctor()
+        public async Task Execute_WhenCall_ShouldReturnsChapter()
         {
             // Arrange
             const string URL = "https://novelbin.net/n/the-cursed-prince/chapter-";
@@ -31,5 +49,19 @@ namespace WebsiteTextExtractor.Core.Tests.Providers
 
             // Assert
         }
+
+        #region Private Methods
+
+        private void SetUp()
+        {
+            _translatePageServiceMock.Setup(_ => _.Translate(It.IsAny<string>())).ReturnsAsync("");
+
+            _pageExtractorServiceMock.Setup(_ => _.StartExtractingPages(
+                It.IsAny<WebConfiguration>(),
+                It.IsAny<FileConfiguration>(),
+                It.IsAny<CancellationToken>()));
+        }
+
+        #endregion Private Methods
     }
 }

@@ -1,15 +1,22 @@
 ﻿using System.Text;
-using WebsiteTextExtractor.Core.Domain;
+using WebsiteTextExtractor.Core.Domain.Interfaces;
+using WebsiteTextExtractor.Core.Domain.Models;
 
 namespace WebsiteTextExtractor.Core.Services
 {
     /// <summary>Represents the FileService to Create/Read/Write files.</summary>
-    public class FileService
+    public class FileService : IFileService
     {
         /// <summary>Execute the creation chapter files.</summary>
-        /// <param name="fileConfig">The <see cref="FileConfiguration"/> instance.</param>
-        /// <param name="inputText">The chapter text.</param>
-        public static void RunCreateBigBook(FileConfiguration fileConfig, List<Chapter> chapters)
+        public void StartCreatingFiles(FileConfiguration fileConfig, List<Chapter> chapters)
+        {
+            RunCreateBigBook(fileConfig, chapters);
+            Console.WriteLine($"Created the book: {fileConfig.FileName} - Chapter: {fileConfig.StartChapter} to {fileConfig.EndChapter}.");
+            RunCreateBigBook(fileConfig, chapters);
+        }
+
+        /// <summary>Execute the creation chapter files.</summary>
+        public void RunCreateBigBook(FileConfiguration fileConfig, List<Chapter> chapters)
         {
             try
             {
@@ -34,7 +41,7 @@ namespace WebsiteTextExtractor.Core.Services
         /// <summary>Execute the creation chapter files.</summary>
         /// <param name="fileConfig">The <see cref="FileConfiguration"/> instance.</param>
         /// <param name="inputText">The chapter text.</param>
-        public static void RunFileCreation(FileConfiguration fileConfig, string inputText, uint chapter)
+        public void RunFileCreation(FileConfiguration fileConfig, string inputText, uint chapter)
         {
             try
             {
@@ -54,25 +61,34 @@ namespace WebsiteTextExtractor.Core.Services
             }
         }
 
-        public static void BuildFiles(FileConfiguration fileConfig)
+        public void BuildFiles(FileConfiguration fileConfig)
         {
             var path = $"{fileConfig.Path}{fileConfig.Language}/{fileConfig.FileName}_{fileConfig.Chapter}_{fileConfig.Language}.{fileConfig.Type}";
             HasFile(path);
         }
 
-        public static void CreateDirectory(string path, string folderName)
+        public void CreateDirectory(string path, string folderName)
         {
             path = CheckSlashPath(path);
             path = UpdateFolderName(path, folderName);
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
         }
 
-        public static string CheckFolderExist(string path, string folderName)
+        public string CheckFolderExist(string path, string folderName)
         {
-            path = CheckSlashPath(path);
-            path = UpdateFolderName(path, folderName);
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-            return path;
+            try
+            {
+                path = CheckSlashPath(path);
+                path = UpdateFolderName(path, folderName);
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                return path;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                throw;
+            }
+            
         }
 
         #region Private Methods

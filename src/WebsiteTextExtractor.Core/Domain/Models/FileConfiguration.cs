@@ -1,4 +1,4 @@
-﻿namespace WebsiteTextExtractor.Core.Domain
+﻿namespace WebsiteTextExtractor.Core.Domain.Models
 {
     public class FileConfiguration
     {

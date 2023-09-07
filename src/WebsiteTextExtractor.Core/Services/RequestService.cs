@@ -1,11 +1,12 @@
 ﻿using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 using System.Web;
+using WebsiteTextExtractor.Core.Domain.Interfaces;
 
 namespace WebsiteTextExtractor.Core.Services
 {
     /// <summary>Represents the Request services (GET, POST...).</summary>
-    public class RequestService
+    public class RequestService : IRequestService
     {
         /// <summary>Request page.</summary>
         /// <param name="url">Used to get the HTML body.</param>
@@ -33,6 +34,8 @@ namespace WebsiteTextExtractor.Core.Services
             return decodedText;
         }
 
+        #region Private Methods
+
         private static string RemoveTag(string decodedText, List<string>? tags)
         {
             if (tags == null || !tags.Any()) return decodedText;
@@ -44,5 +47,7 @@ namespace WebsiteTextExtractor.Core.Services
 
             return decodedText;
         }
+
+        #endregion Private Methods
     }
 }

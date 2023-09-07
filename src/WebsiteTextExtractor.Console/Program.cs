@@ -1,18 +1,22 @@
 ﻿using Generator;
-using WebsiteTextExtractor.Core.Domain;
-using WebsiteTextExtractor.Core.Providers;
+using WebsiteTextExtractor.Core;
+using WebsiteTextExtractor.Core.Domain.Models;
 
 internal class Program : ConsoleCommands
 {
     private static WebConfiguration _web;
     private static FileConfiguration _file;
 
-    private static async void Main()
+    private static void Main()
     {
         Console.WriteLine("Starting process!");
-        MainProvider mainProvider = new();
-        GetInformation();
-        await mainProvider.Execute(_web, _file);
+        //GetInformation();
+        DefaultInformation();
+
+        Startup startup = new();
+        startup.Run(_web, _file);
+
+        // Chame o método Execute
         Console.WriteLine("Finished process!");
     }
 

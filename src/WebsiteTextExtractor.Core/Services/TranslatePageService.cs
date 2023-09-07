@@ -1,10 +1,11 @@
 ﻿using Flurl.Http;
 using System.Web;
+using WebsiteTextExtractor.Core.Domain.Interfaces;
 
 namespace WebsiteTextExtractor.Core.Services
 {
     /// <summary>Represents the Translate pages service.</summary>
-    public class TranslatePageService
+    public class TranslatePageService : ITranslatePageService
     {
         /// <summary>Translate the text.</summary>
         /// <param name="text">The text that will be translated.</param>

@@ -1,12 +1,12 @@
-﻿namespace WebsiteTextExtractor.Core.Domain
+﻿namespace WebsiteTextExtractor.Core.Domain.Models
 {
     /// <summary>Respresents the WEB site configuration.</summary>
     public class WebConfiguration
     {
         public WebConfiguration(
             string url,
-            string? xPath = null,
-            string? xPathTitle = null,
+            string xPath = "",
+            string xPathTitle = "",
             bool hasTitle = false,
             List<string>? tagsToFix = null)
         {
@@ -18,8 +18,8 @@
         }
 
         public string Url { get; set; }
-        public string? XPathText { get; set; }
-        public string? XPathTitle { get; set; }
+        public string XPathText { get; set; }
+        public string XPathTitle { get; set; }
         public bool HasTitle { get; set; }
         public List<string>? TagsToFix { get; set; }
     }

@@ -1,4 +1,4 @@
-﻿using WebsiteTextExtractor.Core.Domain;
+﻿using WebsiteTextExtractor.Core.Domain.Models;
 using WebsiteTextExtractor.Core.Services;
 using Xunit;
 
@@ -6,6 +6,10 @@ namespace WebsiteTextExtractor.Core.Tests.Services
 {
     public class FileServiceTests
     {
+        private readonly FileService _fileService;
+
+        public FileServiceTests() => _fileService = new FileService();
+
         [Fact]
         public void RunFileCreation_WhenCall_ShouldCreateFile()
         {
@@ -21,7 +25,7 @@ namespace WebsiteTextExtractor.Core.Tests.Services
             FileConfiguration file = new(FILE_NAME, LANGUAGE, PATH, START_CHAPTER, END_CHAPTER);
 
             // Act
-            FileService.RunFileCreation(file, TEXT, CHAPTER);
+            _fileService.RunFileCreation(file, TEXT, CHAPTER);
         }
     }
 }
