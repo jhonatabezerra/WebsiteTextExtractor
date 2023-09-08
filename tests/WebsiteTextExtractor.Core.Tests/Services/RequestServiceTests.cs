@@ -37,6 +37,7 @@ namespace WebsiteTextExtractor.Core.Tests.Services
 
             // Assert
             result.Should().NotBeNullOrEmpty();
+            result.Length.Should().BeGreaterThan(0);
         }
     }
 }
