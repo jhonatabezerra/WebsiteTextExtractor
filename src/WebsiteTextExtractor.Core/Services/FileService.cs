@@ -7,23 +7,39 @@ namespace WebsiteTextExtractor.Core.Services
     /// <summary>Represents the FileService to Create/Read/Write files.</summary>
     public class FileService : IFileService
     {
-        /// <summary>Execute the creation chapter files.</summary>
-        public void StartCreatingFiles(FileConfiguration fileConfig, List<Chapter> chapters)
+        private const string FOLDER_BOOKS_GENERATED = "BooksGenerated";
+
+        public Task CheckFolders(Data data)
         {
-            RunCreateBigBook(fileConfig, chapters);
-            Console.WriteLine($"Created the book: {fileConfig.FileName} - Chapter: {fileConfig.StartChapter} to {fileConfig.EndChapter}.");
-            RunCreateBigBook(fileConfig, chapters);
+            // TODO: Refactor this method.
+            data.FileConfiguration.Path = CheckFolderExist(data.FileConfiguration.Path, FOLDER_BOOKS_GENERATED);
+            data.FileConfiguration.Path = CheckFolderExist(data.FileConfiguration.Path, data.FileConfiguration.FileName);
+            data.FileConfiguration.Path = CheckFolderExist(data.FileConfiguration.Path, data.FileConfiguration.Language);
+            return Task.CompletedTask;
         }
 
         /// <summary>Execute the creation chapter files.</summary>
-        public void RunCreateBigBook(FileConfiguration fileConfig, List<Chapter> chapters)
+        public Task StartCreatingFiles(Data data)
+        {
+            RunCreateBigBook(data);
+            Console.WriteLine(
+                $"Created the book: {data.FileConfiguration.FileName}" +
+                $" - Chapter: {data.FileConfiguration.StartChapter}" +
+                $" to {data.FileConfiguration.EndChapter}.");
+
+            RunCreateBigBook(data);
+            return Task.CompletedTask;
+        }
+
+        /// <summary>Execute the creation chapter files.</summary>
+        private void RunCreateBigBook(Data data)
         {
             try
             {
-                string fileName = $"Chapter {fileConfig.StartChapter} to {fileConfig.EndChapter}.{fileConfig.Type}";
-                string filePath = $"{fileConfig.Path}{fileName}";
+                string fileName = $"Chapter {data.FileConfiguration.StartChapter} to {data.FileConfiguration.EndChapter}.{data.FileConfiguration.Type}";
+                string filePath = $"{data.FileConfiguration.Path}{fileName}";
                 string inputText = string.Empty;
-                foreach (Chapter chapter in chapters)
+                foreach (Chapter chapter in data.Chapters)
                 {
                     inputText += $"{chapter.ChapterTitle} \n\n";
                     inputText += $"{chapter.ChapterText} \n\n";
@@ -61,7 +77,7 @@ namespace WebsiteTextExtractor.Core.Services
             }
         }
 
-        public void BuildFiles(FileConfiguration fileConfig)
+        private void BuildFiles(FileConfiguration fileConfig)
         {
             var path = $"{fileConfig.Path}{fileConfig.Language}/{fileConfig.FileName}_{fileConfig.Chapter}_{fileConfig.Language}.{fileConfig.Type}";
             HasFile(path);
@@ -88,7 +104,6 @@ namespace WebsiteTextExtractor.Core.Services
                 Console.WriteLine($"Error: {ex.Message}");
                 throw;
             }
-            
         }
 
         #region Private Methods

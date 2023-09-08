@@ -12,19 +12,19 @@ namespace WebsiteTextExtractor.Core.Services
             _requestService = requestService;
         }
 
-        public async Task<List<Chapter>> StartExtractingPages(WebConfiguration web, FileConfiguration file, CancellationToken cancellationToken = default)
+        public async Task StartExtractingPages(Data data)
         {
-            return GetChapters(web, file);
+            data.Chapters = GetChapters(data);
         }
 
         #region Private Methods
 
-        private List<Chapter> GetChapters(WebConfiguration web, FileConfiguration file)
+        private List<Chapter> GetChapters(Data data)
         {
             List<Chapter> chapterCollection = new();
-            for (uint chapter = file.StartChapter; chapter <= file.EndChapter; chapter++)
+            for (uint chapter = data.FileConfiguration.StartChapter; chapter <= data.FileConfiguration.EndChapter; chapter++)
             {
-                var chapterWithContext = GetPageText(web, chapter);
+                var chapterWithContext = GetPageText(data.WebConfiguration, chapter);
                 if (chapterWithContext != null) chapterCollection.Add(chapterWithContext);
             }
             return chapterCollection;

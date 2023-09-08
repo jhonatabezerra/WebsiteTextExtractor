@@ -12,11 +12,10 @@ internal class Program : ConsoleCommands
         Console.WriteLine("Starting process!");
         //GetInformation();
         DefaultInformation();
-
+        var data = new Data(_web, _file);
         Startup startup = new();
-        startup.Run(_web, _file);
+        startup.Run(data);
 
-        // Chame o método Execute
         Console.WriteLine("Finished process!");
     }
 

@@ -12,17 +12,14 @@ namespace WebsiteTextExtractor.Core
 
         public Startup()
         {
-            DependencyConfig.RegisterDependencies(_container); // Configuração das dependências
+            DependencyConfig.RegisterDependencies(_container);
 
             _mainProvider = _container.GetInstance<IMainProvider>();
         }
 
-        public void Run(WebConfiguration web, FileConfiguration file)
+        public void Run(Data data)
         {
-            //AreaRegistration.RegisterAllAreas();
-
-            // Chame o método Execute
-            _mainProvider.Execute(web, file);
+            _mainProvider.Execute(data);
         }
     }
 }

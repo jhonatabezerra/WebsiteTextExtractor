@@ -26,7 +26,7 @@ namespace WebsiteTextExtractor.Core.Tests
             FileConfiguration file = new(FILE_NAME, LANGUAGE, PATH, START_CHAPTER, END_CHAPTER);
 
             // Act
-            _program.Run(web, file);
+            _program.Run(new Data(web, file));
 
             // Assert
         }

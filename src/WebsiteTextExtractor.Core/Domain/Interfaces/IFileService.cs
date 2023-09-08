@@ -4,9 +4,12 @@ namespace WebsiteTextExtractor.Core.Domain.Interfaces
 {
     public interface IFileService
     {
-        void BuildFiles(FileConfiguration fileConfig);
         string CheckFolderExist(string path, string folderName);
+
+        Task CheckFolders(Data data);
+
         void CreateDirectory(string path, string folderName);
-        void StartCreatingFiles(FileConfiguration fileConfig, List<Chapter> chapters);
+
+        Task StartCreatingFiles(Data data);
     }
 }
