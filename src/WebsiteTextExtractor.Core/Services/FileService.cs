@@ -8,6 +8,12 @@ namespace WebsiteTextExtractor.Core.Services
     public class FileService : IFileService
     {
         private const string FOLDER_BOOKS_GENERATED = "BooksGenerated";
+        private readonly IDirectoryProvider _directoryProvider;
+
+        public FileService(IDirectoryProvider directoryProvider)
+        {
+            _directoryProvider = directoryProvider;
+        }
 
         public Task CheckFolders(Data data)
         {
@@ -87,7 +93,7 @@ namespace WebsiteTextExtractor.Core.Services
         {
             path = CheckSlashPath(path);
             path = UpdateFolderName(path, folderName);
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            if (!_directoryProvider.HasDirectory(path)) _directoryProvider.CreateDirectory(path);
         }
 
         public string CheckFolderExist(string path, string folderName)
@@ -96,7 +102,7 @@ namespace WebsiteTextExtractor.Core.Services
             {
                 path = CheckSlashPath(path);
                 path = UpdateFolderName(path, folderName);
-                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                if (!_directoryProvider.HasDirectory(path)) _directoryProvider.CreateDirectory(path);
                 return path;
             }
             catch (Exception ex)

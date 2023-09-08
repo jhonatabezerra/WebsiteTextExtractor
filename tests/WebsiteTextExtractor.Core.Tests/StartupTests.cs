@@ -10,7 +10,7 @@ namespace WebsiteTextExtractor.Core.Tests
         public StartupTests() => _program = new Startup();
 
         [Fact]
-        public void Run()
+        public void Run_WhenCall_ShouldRetunsAllProccess()
         {
             // Arrange
             const string URL = "https://novelbin.net/n/the-cursed-prince/chapter-";

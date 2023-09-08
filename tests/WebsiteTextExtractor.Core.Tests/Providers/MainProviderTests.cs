@@ -45,7 +45,7 @@ namespace WebsiteTextExtractor.Core.Tests.Providers
             FileConfiguration file = new(FILE_NAME, LANGUAGE, PATH, START_CHAPTER, END_CHAPTER);
 
             // Act
-            await _mainProvider.Execute(web, file);
+            await _mainProvider.Execute(new Data(web, file));
 
             // Assert
         }
@@ -55,11 +55,9 @@ namespace WebsiteTextExtractor.Core.Tests.Providers
         private void SetUp()
         {
             _translatePageServiceMock.Setup(_ => _.Translate(It.IsAny<string>())).ReturnsAsync("");
-
-            _pageExtractorServiceMock.Setup(_ => _.StartExtractingPages(
-                It.IsAny<WebConfiguration>(),
-                It.IsAny<FileConfiguration>(),
-                It.IsAny<CancellationToken>()));
+            _pageExtractorServiceMock.Setup(_ => _.StartExtractingPages(It.IsAny<Data>())).Returns(Task.CompletedTask);
+            _fileServiceMock.Setup(_ => _.CheckFolders(It.IsAny<Data>())).Returns(Task.CompletedTask);
+            _fileServiceMock.Setup(_ => _.StartCreatingFiles(It.IsAny<Data>())).Returns(Task.CompletedTask);
         }
 
         #endregion Private Methods

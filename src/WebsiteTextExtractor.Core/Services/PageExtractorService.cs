@@ -30,6 +30,7 @@ namespace WebsiteTextExtractor.Core.Services
             return chapterCollection;
         }
 
+        // TODO: Refactor this method - Is not neccessary call 'GetPageString' 2 times.
         private Chapter? GetPageText(WebConfiguration web, uint chapter)
         {
             var url = $"{web.Url}{chapter}/";

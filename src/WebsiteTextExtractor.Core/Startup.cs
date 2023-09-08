@@ -12,7 +12,7 @@ namespace WebsiteTextExtractor.Core
 
         public Startup()
         {
-            DependencyConfig.RegisterDependencies(_container);
+            DependencyInjectionConfiguration.RegisterDependencies(_container);
 
             _mainProvider = _container.GetInstance<IMainProvider>();
         }
