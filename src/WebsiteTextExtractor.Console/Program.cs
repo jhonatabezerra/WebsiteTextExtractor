@@ -4,36 +4,24 @@ using WebsiteTextExtractor.Core.Domain.Models;
 
 internal class Program : ConsoleCommands
 {
-    private static WebConfiguration _web;
-    private static FileConfiguration _file;
-
     private static void Main()
     {
         Console.WriteLine("Starting process!");
         //GetInformation();
-        DefaultInformation();
-        var data = new Data(_web, _file);
+        var data = DefaultInformation();
         Startup startup = new();
         startup.Run(data);
 
         Console.WriteLine("Finished process!");
     }
 
-    private static void GetInformation()
+    private static Data GetInformation()
     {
         var isDefaultValue = CommandInputBool("Would you like to use an example with default chapter (Y/N): ");
-        if (isDefaultValue)
-        {
-            DefaultInformation2();
-            return;
-        }
+        if (isDefaultValue) return DefaultInformation2();
 
         var isBigBook = CommandInputBool("Would you like to use an example with default books (Y/N): ");
-        if (isBigBook)
-        {
-            DefaultInformation3();
-            return;
-        }
+        if (isBigBook) return DefaultInformation3();
 
         var xPathTitle = string.Empty;
         var booksName = CommandInputString("Input the Book's name: ");
@@ -46,11 +34,12 @@ internal class Program : ConsoleCommands
         var hasTitle = CommandInputBool("Would you like to get the title too?(Y/N): ");
         if (hasTitle) xPathTitle = CommandInputString("Input the xPath of title: ");
 
-        _web = new(sitePath, xPath, xPathTitle, hasTitle);
-        _file = new(booksName, language, path, startChapter, endChapter);
+        WebConfiguration web = new(sitePath, xPath, xPathTitle, hasTitle);
+        FileConfiguration file = new(booksName, language, path, startChapter, endChapter);
+        return new Data(web, file);
     }
 
-    private static void DefaultInformation()
+    private static Data DefaultInformation()
     {
         uint startChapter = 1;
         uint endChapter = 10;
@@ -61,11 +50,12 @@ internal class Program : ConsoleCommands
         var url = $"https://boxnovel.com/novel/release-that-witch/chapter-";
         var xPath = "//div[contains(@class, 'text-left')]";
 
-        _web = new(url, xPath);
-        _file = new(bookName, language, path, startChapter, endChapter);
+        WebConfiguration web = new(url, xPath);
+        FileConfiguration file = new(bookName, language, path, startChapter, endChapter);
+        return new Data(web, file);
     }
 
-    private static void DefaultInformation2()
+    private static Data DefaultInformation2()
     {
         uint startChapter = 1;
         uint endChapter = 100;
@@ -77,11 +67,12 @@ internal class Program : ConsoleCommands
         var xPathTitle = "//*[@id=\"chapter\"]/div/div/h2/a";
         var xPathText = "//*[@id=\"chr-content\"]";
 
-        _web = new(url, xPathText, xPathTitle, true);
-        _file = new(bookName, language, path, startChapter, endChapter);
+        WebConfiguration web = new(url, xPathText, xPathTitle, true);
+        FileConfiguration file = new(bookName, language, path, startChapter, endChapter);
+        return new Data(web, file);
     }
 
-    private static void DefaultInformation3()
+    private static Data DefaultInformation3()
     {
         uint startChapter = 139;
         uint endChapter = 400;
@@ -94,7 +85,8 @@ internal class Program : ConsoleCommands
         var xPathText = "//*[@id=\"chr-content\"]";
         List<string> tagsToFix = new() { "62e886631a93af4356fc7a46", ">>>>>>\\s" };
 
-        _web = new(url, xPathText, xPathTitle, true, tagsToFix);
-        _file = new(bookName, language, path, startChapter, endChapter, null, null, true);
+        WebConfiguration web = new(url, xPathText, xPathTitle, true, tagsToFix);
+        FileConfiguration file = new(bookName, language, path, startChapter, endChapter, null, null, true);
+        return new Data(web, file);
     }
 }

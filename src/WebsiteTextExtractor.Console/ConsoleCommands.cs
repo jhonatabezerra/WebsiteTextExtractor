@@ -1,47 +1,46 @@
-﻿namespace Generator
+﻿namespace Generator;
+
+public class ConsoleCommands
 {
-    public class ConsoleCommands
+    public static string CommandInputString(string message)
     {
-        public static string CommandInputString(string message)
-        {
-            Console.Write(message);
-            return ReadCommand(message);
-        }
+        Console.Write(message);
+        return ReadCommand(message);
+    }
 
-        public static uint CommandInputUint(string message)
-        {
-            Console.Write(message);
-            return Convert.ToUInt32(Console.ReadLine());
-        }
+    public static uint CommandInputUint(string message)
+    {
+        Console.Write(message);
+        return Convert.ToUInt32(Console.ReadLine());
+    }
 
-        public static bool CommandInputBool(string message)
+    public static bool CommandInputBool(string message)
+    {
+        Console.Write(message);
+        var input = Console.ReadLine();
+        if (IsNullOrEmpty(input)) WriteInvalidInput(message);
+        if (input!.ToUpper() == "Y") return true;
+        return false;
+    }
+
+    private static string ReadCommand(string message)
+    {
+        var input = Console.ReadLine();
+
+        do
         {
-            Console.Write(message);
-            var input = Console.ReadLine();
             if (IsNullOrEmpty(input)) WriteInvalidInput(message);
-            if (input.ToUpper() == "Y") return true;
-            return false;
-        }
+            break;
+        } while (true);
 
-        private static string ReadCommand(string message)
-        {
-            var input = Console.ReadLine();
+        return input ?? string.Empty;
+    }
 
-            do
-            {
-                if (IsNullOrEmpty(input)) WriteInvalidInput(message);
-                break;
-            } while (true);
+    private static bool IsNullOrEmpty(string? value) => string.IsNullOrEmpty(value);
 
-            return input;
-        }
-
-        private static bool IsNullOrEmpty(string value) => string.IsNullOrEmpty(value);
-
-        private static void WriteInvalidInput(string message)
-        {
-            Console.WriteLine("Invalid input.");
-            Console.Write(message);
-        }
+    private static void WriteInvalidInput(string message)
+    {
+        Console.WriteLine("Invalid input.");
+        Console.Write(message);
     }
 }

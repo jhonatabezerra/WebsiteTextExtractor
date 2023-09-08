@@ -1,6 +1,4 @@
 ﻿using SimpleInjector;
-using SimpleInjector.Integration.Web.Mvc;
-using System.Web.Mvc;
 using WebsiteTextExtractor.Core.Domain.Interfaces;
 using WebsiteTextExtractor.Core.Providers;
 using WebsiteTextExtractor.Core.Services;
@@ -21,7 +19,7 @@ namespace WebsiteTextExtractor.Core.Configuration
             container.Register<IMainProvider, MainProvider>();
             container.Register<IDirectoryProvider, DirectoryProvider>();
 
-            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+            //DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
 
             container.Verify();
         }

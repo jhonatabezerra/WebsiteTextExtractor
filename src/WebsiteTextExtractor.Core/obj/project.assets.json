@@ -33,7 +33,7 @@
           }
         }
       },
-      "HtmlAgilityPack/1.11.46": {
+      "HtmlAgilityPack/1.11.52": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/HtmlAgilityPack.dll": {
@@ -44,47 +44,6 @@
           "lib/netstandard2.0/HtmlAgilityPack.dll": {
             "related": ".deps.json;.pdb;.xml"
           }
-        }
-      },
-      "Microsoft.AspNet.Mvc/3.0.20105.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Razor": "1.0.20105.408",
-          "Microsoft.AspNet.WebPages": "1.0.20105.408"
-        },
-        "compile": {
-          "lib/net40/System.Web.Mvc.dll": {}
-        },
-        "runtime": {
-          "lib/net40/System.Web.Mvc.dll": {}
-        }
-      },
-      "Microsoft.AspNet.Razor/1.0.20105.408": {
-        "type": "package",
-        "compile": {
-          "lib/net40/System.Web.Razor.dll": {}
-        },
-        "runtime": {
-          "lib/net40/System.Web.Razor.dll": {}
-        }
-      },
-      "Microsoft.AspNet.WebPages/1.0.20105.408": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Razor": "1.0.20105.408",
-          "Microsoft.Web.Infrastructure": "1.0.0"
-        },
-        "compile": {
-          "lib/net40/System.Web.Helpers.dll": {},
-          "lib/net40/System.Web.WebPages.Deployment.dll": {},
-          "lib/net40/System.Web.WebPages.Razor.dll": {},
-          "lib/net40/System.Web.WebPages.dll": {}
-        },
-        "runtime": {
-          "lib/net40/System.Web.Helpers.dll": {},
-          "lib/net40/System.Web.WebPages.Deployment.dll": {},
-          "lib/net40/System.Web.WebPages.Razor.dll": {},
-          "lib/net40/System.Web.WebPages.dll": {}
         }
       },
       "Microsoft.NETCore.Platforms/2.1.2": {
@@ -103,15 +62,6 @@
         },
         "runtime": {
           "lib/netstandard1.0/_._": {}
-        }
-      },
-      "Microsoft.Web.Infrastructure/1.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
         }
       },
       "Newtonsoft.Json/12.0.2": {
@@ -139,41 +89,6 @@
         },
         "runtime": {
           "lib/netstandard2.1/SimpleInjector.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "SimpleInjector.Integration.Web/5.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Web.Infrastructure": "1.0.0",
-          "SimpleInjector": "[5.0.0, 6.0.0)"
-        },
-        "compile": {
-          "lib/net45/SimpleInjector.Integration.Web.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net45/SimpleInjector.Integration.Web.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "SimpleInjector.Integration.Web.Mvc/5.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNet.Mvc": "3.0.20105.1",
-          "SimpleInjector": "[5.0.0, 6.0.0)",
-          "SimpleInjector.Integration.Web": "[5.0.0, 6.0.0)"
-        },
-        "compile": {
-          "lib/net45/SimpleInjector.Integration.Web.Mvc.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net45/SimpleInjector.Integration.Web.Mvc.dll": {
             "related": ".xml"
           }
         }
@@ -275,14 +190,14 @@
         "lib/netstandard2.0/Flurl.Http.xml"
       ]
     },
-    "HtmlAgilityPack/1.11.46": {
-      "sha512": "dLMn4EVfJBHWmWK4Uh0XGD76FPLHI0qr2Tm0s1m/xmgiHb1JUb9zB8AzO8HtrkBBlMN6JfCUBYddhqC0hZNR+g==",
+    "HtmlAgilityPack/1.11.52": {
+      "sha512": "qfJzz0eEgoO5O6uA1PpH4wmU4yz64PKnDolAW41vTlCfRyPlAyZIJANg+QYmQgxiWg/cLUAkcLNMpB7CCV66ZQ==",
       "type": "package",
-      "path": "htmlagilitypack/1.11.46",
+      "path": "htmlagilitypack/1.11.52",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "htmlagilitypack.1.11.46.nupkg.sha512",
+        "htmlagilitypack.1.11.52.nupkg.sha512",
         "htmlagilitypack.nuspec",
         "lib/Net35/HtmlAgilityPack.dll",
         "lib/Net35/HtmlAgilityPack.pdb",
@@ -323,45 +238,6 @@
         "lib/uap10.0/HtmlAgilityPack.pri"
       ]
     },
-    "Microsoft.AspNet.Mvc/3.0.20105.1": {
-      "sha512": "CjEb1ExBqe3DceDCg4EhdimdoDTMuBOmA490lRKgl3EN8L4G8+lBRHDF7Ho8QkFsY7C5Y4pTfqhD7Zl8VPOtWQ==",
-      "type": "package",
-      "path": "microsoft.aspnet.mvc/3.0.20105.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/System.Web.Mvc.dll",
-        "microsoft.aspnet.mvc.3.0.20105.1.nupkg.sha512",
-        "microsoft.aspnet.mvc.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.Razor/1.0.20105.408": {
-      "sha512": "vRmwL/G31Xc9DusVQUJXmDpTYEVB7xUoIjKqCyuOHrCyG9kzM66MadNjdPLzplSsDoWqiae35US8XiiI3e6SBw==",
-      "type": "package",
-      "path": "microsoft.aspnet.razor/1.0.20105.408",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/System.Web.Razor.dll",
-        "microsoft.aspnet.razor.1.0.20105.408.nupkg.sha512",
-        "microsoft.aspnet.razor.nuspec"
-      ]
-    },
-    "Microsoft.AspNet.WebPages/1.0.20105.408": {
-      "sha512": "da1//kx0b6GXJG6V8vGl7PmvhPJE/aNs2mK0QJ9bojgy059BDdYhmAwpTT1ucDgbImbFDdmNGi/XJj2SU0QJeA==",
-      "type": "package",
-      "path": "microsoft.aspnet.webpages/1.0.20105.408",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/System.Web.Helpers.dll",
-        "lib/net40/System.Web.WebPages.Deployment.dll",
-        "lib/net40/System.Web.WebPages.Razor.dll",
-        "lib/net40/System.Web.WebPages.dll",
-        "microsoft.aspnet.webpages.1.0.20105.408.nupkg.sha512",
-        "microsoft.aspnet.webpages.nuspec"
-      ]
-    },
     "Microsoft.NETCore.Platforms/2.1.2": {
       "sha512": "mOJy3M0UN+LUG21dLGMxaWZEP6xYpQEpLuvuEQBaownaX4YuhH6NmNUlN9si+vNkAS6dwJ//N1O4DmLf2CikVg==",
       "type": "package",
@@ -392,18 +268,6 @@
         "microsoft.netcore.targets.1.0.1.nupkg.sha512",
         "microsoft.netcore.targets.nuspec",
         "runtime.json"
-      ]
-    },
-    "Microsoft.Web.Infrastructure/1.0.0": {
-      "sha512": "FNmvLn5m2LTU/Rs2KWVo0SIIh9Ek+U0ojex7xeDaSHw/zgEP77A8vY5cVWgUtBGS8MJfDGNn8rpXJWEIQaPwTg==",
-      "type": "package",
-      "path": "microsoft.web.infrastructure/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/Microsoft.Web.Infrastructure.dll",
-        "microsoft.web.infrastructure.1.0.0.nupkg.sha512",
-        "microsoft.web.infrastructure.nuspec"
       ]
     },
     "Newtonsoft.Json/12.0.2": {
@@ -457,34 +321,6 @@
         "lib/netstandard2.1/SimpleInjector.xml",
         "simpleinjector.5.4.1.nupkg.sha512",
         "simpleinjector.nuspec",
-        "simpleinjector.png"
-      ]
-    },
-    "SimpleInjector.Integration.Web/5.0.0": {
-      "sha512": "3NgFlX3ZHvH2SyHA4y8wSHquRTXqDdbt1JJM8Flfe3qegC7MALSZw45uQw0IldmeYzt7x8hl5CfD7R03LNC6qA==",
-      "type": "package",
-      "path": "simpleinjector.integration.web/5.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net45/SimpleInjector.Integration.Web.dll",
-        "lib/net45/SimpleInjector.Integration.Web.xml",
-        "simpleinjector.integration.web.5.0.0.nupkg.sha512",
-        "simpleinjector.integration.web.nuspec",
-        "simpleinjector.png"
-      ]
-    },
-    "SimpleInjector.Integration.Web.Mvc/5.0.0": {
-      "sha512": "gH7Rr4T2xKWXhsQ8E+L6t+BE12qceXtyv/T/YbIg6ni6OVUA2h//Jxx7KFoFBGTNW+muv95u1GQw7Z1uiGJcGA==",
-      "type": "package",
-      "path": "simpleinjector.integration.web.mvc/5.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net45/SimpleInjector.Integration.Web.Mvc.dll",
-        "lib/net45/SimpleInjector.Integration.Web.Mvc.xml",
-        "simpleinjector.integration.web.mvc.5.0.0.nupkg.sha512",
-        "simpleinjector.integration.web.mvc.nuspec",
         "simpleinjector.png"
       ]
     },
@@ -703,10 +539,8 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Flurl.Http >= 3.2.4",
-      "HtmlAgilityPack >= 1.11.46",
-      "SimpleInjector >= 5.4.1",
-      "SimpleInjector.Integration.Web >= 5.0.0",
-      "SimpleInjector.Integration.Web.Mvc >= 5.0.0"
+      "HtmlAgilityPack >= 1.11.52",
+      "SimpleInjector >= 5.4.1"
     ]
   },
   "packageFolders": {
@@ -760,19 +594,11 @@
           },
           "HtmlAgilityPack": {
             "target": "Package",
-            "version": "[1.11.46, )"
+            "version": "[1.11.52, )"
           },
           "SimpleInjector": {
             "target": "Package",
             "version": "[5.4.1, )"
-          },
-          "SimpleInjector.Integration.Web": {
-            "target": "Package",
-            "version": "[5.0.0, )"
-          },
-          "SimpleInjector.Integration.Web.Mvc": {
-            "target": "Package",
-            "version": "[5.0.0, )"
           }
         },
         "imports": [
@@ -794,67 +620,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Mvc 3.0.20105.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Mvc",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Razor 1.0.20105.408' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Razor",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.WebPages 1.0.20105.408' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.WebPages",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.Web.Infrastructure",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'SimpleInjector.Integration.Web 5.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "SimpleInjector.Integration.Web",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'SimpleInjector.Integration.Web.Mvc 5.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "SimpleInjector.Integration.Web.Mvc",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }

@@ -12,9 +12,10 @@ namespace WebsiteTextExtractor.Core.Services
             _requestService = requestService;
         }
 
-        public async Task StartExtractingPages(Data data)
+        public Task StartExtractingPages(Data data)
         {
             data.Chapters = GetChapters(data);
+            return Task.CompletedTask;
         }
 
         #region Private Methods

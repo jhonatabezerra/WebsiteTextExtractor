@@ -51,19 +51,11 @@
             },
             "HtmlAgilityPack": {
               "target": "Package",
-              "version": "[1.11.46, )"
+              "version": "[1.11.52, )"
             },
             "SimpleInjector": {
               "target": "Package",
               "version": "[5.4.1, )"
-            },
-            "SimpleInjector.Integration.Web": {
-              "target": "Package",
-              "version": "[5.0.0, )"
-            },
-            "SimpleInjector.Integration.Web.Mvc": {
-              "target": "Package",
-              "version": "[5.0.0, )"
             }
           },
           "imports": [
